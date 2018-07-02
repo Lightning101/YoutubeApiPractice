@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.apphunters.splashscreen"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.android.support:design:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    compile ('com.google.apis:google-api-services-oauth2:v1-rev142-1.23.0'){
+        exclude module: 'httpclient' //by artifact name
+        exclude group: 'org.apache.httpcomponents' //by group
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient' //by both name and group
+    }
+    compile ('com.google.apis:google-api-services-youtube:v3-rev181-1.22.0'){
+        exclude module: 'httpclient' //by artifact name
+        exclude group: 'org.apache.httpcomponents' //by group
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient' //by both name and group
+    }
+    compile (group: 'com.google.oauth-client', name: 'google-oauth-client-jetty', version: '1.23.0') {
+        exclude module: 'httpclient' //by artifact name
+        exclude group: 'org.apache.httpcomponents' //by group
+        exclude group: 'org.apache.httpcomponents', module: 'httpclient' //by both name and group
+    }
+    compile 'com.google.api-client:google-api-client:1.23.0'
+    compile group: 'com.squareup.picasso', name: 'picasso', version: '2.4.0'
+}
